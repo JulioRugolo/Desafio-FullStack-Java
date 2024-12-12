@@ -1,0 +1,52 @@
+.lista-pontos-container {
+    max-width: 800px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .lista-pontos-container h2 {
+    text-align: center;
+    color: #007bff;
+  }
+  
+  .lista-pontos-container ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .lista-pontos-container li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    border-radius: 4px;
+  }
+  
+  .lista-pontos-container .link-detalhes {
+    cursor: pointer;
+    color: #007bff;
+    text-decoration: underline;
+  }
+  
+  .lista-pontos-container .link-detalhes:hover {
+    color: #0056b3;
+  }
+  
+  .lista-pontos-container .editar-btn,
+  .lista-pontos-container .excluir-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .lista-pontos-container .editar-btn {
+    color: #007bff;
+  }
+  
+  .lista-pontos-container .excluir-btn {
+    color: #dc3545;
+  }
+  

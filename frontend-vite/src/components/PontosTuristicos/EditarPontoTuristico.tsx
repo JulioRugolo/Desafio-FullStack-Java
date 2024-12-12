@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../../styles/CadastroPontoTuristico.css';
+import { useParams, useNavigate } from 'react-router-dom';
+import '../../styles/EditarPontoTuristico.css';
 
-const CadastroPontoTuristico: React.FC = () => {
+const EditarPontoTuristico: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     nome: '',
     cidade: '',
@@ -10,7 +13,15 @@ const CadastroPontoTuristico: React.FC = () => {
     resumo: '',
     paisId: '',
   });
-  const [message, setMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (id) {
+      axios
+        .get(`http://localhost:3000/api/ponto-turistico/${id}`)
+        .then((response) => setForm(response.data))
+        .catch((error) => console.error('Erro ao carregar ponto turístico:', error));
+    }
+  }, [id]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -20,26 +31,20 @@ const CadastroPontoTuristico: React.FC = () => {
     e.preventDefault();
 
     axios
-      .post('http://localhost:3000/api/ponto-turistico', form)
+      .put(`http://localhost:3000/api/ponto-turistico/${id}`, form)
       .then(() => {
-        setMessage('Ponto Turístico cadastrado com sucesso!');
-        setForm({
-          nome: '',
-          cidade: '',
-          melhorEstacao: '',
-          resumo: '',
-          paisId: '',
-        });
+        alert('Ponto Turístico atualizado com sucesso!');
+        navigate('/ponto-turistico');
       })
       .catch((error) => {
-        console.error('Erro ao cadastrar ponto turístico:', error);
-        setMessage('Erro ao cadastrar ponto turístico. Verifique os dados.');
+        console.error('Erro ao atualizar ponto turístico:', error);
+        alert('Erro ao atualizar ponto turístico.');
       });
   };
 
   return (
-    <div className="cadastro-ponto-container">
-      <h2>Cadastro de Ponto Turístico</h2>
+    <div className="editar-ponto-container">
+      <h2>Editar Ponto Turístico</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label>
@@ -103,9 +108,8 @@ const CadastroPontoTuristico: React.FC = () => {
         </div>
         <button type="submit">Salvar</button>
       </form>
-      {message && <p>{message}</p>}
     </div>
   );
 };
 
-export default CadastroPontoTuristico;
+export default EditarPontoTuristico;
