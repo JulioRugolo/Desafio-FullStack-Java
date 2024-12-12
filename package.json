@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontendAngular\" \"npm run start:frontendVite\"",
     "start:backend": "cd Backend && npm install && npm start",
-    "start:frontend": "cd frontend && npm install && npm start"
+    "start:frontendAngular": "cd frontend && npm install && npm start",
+    "start:frontendVite": "cd frontend-vite && npm install && npm run dev"
+
   },
   "keywords": [],
   "author": "",

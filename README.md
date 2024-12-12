@@ -3,13 +3,14 @@
 
 ## Sobre o Projeto
 
-O **Desafio Fullstack** é uma aplicação para gerenciamento de **Países**, **Pontos Turísticos** e **Comentários**. A aplicação oferece um CRUD completo para essas entidades e utiliza as tecnologias **Angular** no frontend e **Node.js** no backend. O banco de dados é configurado com **MySQL** utilizando **Docker** para facilitar a inicialização do ambiente.
+O **Desafio Fullstack** é uma aplicação para gerenciamento de **Países**, **Pontos Turísticos** e **Comentários**. A aplicação oferece um CRUD completo para essas entidades e utiliza as tecnologias **Angular** no frontend (e uma versão do frontend em **Vite**) e **Node.js** no backend. O banco de dados é configurado com **MySQL** utilizando **Docker** para facilitar a inicialização do ambiente.
 
 ---
 
 ## Tecnologias Utilizadas
 
-- **Frontend:** Angular com PO-UI
+- **Frontend (Angular):** Angular com PO-UI
+- **Frontend (Vite):** Vite com Tailwind
 - **Backend:** Node.js com Express.js
 - **Banco de Dados:** MySQL (configurado via Docker)
 - **Outras Ferramentas e Bibliotecas:**
@@ -54,7 +55,8 @@ npm start
 
 Após a inicialização:
 
-- **Frontend:** Acesse em `http://localhost:4200`.
+- **Frontend (Angular):** Acesse em `http://localhost:4200`.
+- **Frontend (Vite):** Acesse em `http://localhost:5173`.
 - **Backend:** A API estará disponível em `http://localhost:3000`.
 
 ---
@@ -81,4 +83,4 @@ Após a inicialização:
 ---
 
 ## Autor
-Feito com ❤️ por **Julio Rugolo**. Sinta-se à vontade para contribuir! 😊
+Feito com ❤️ por **Julio Rugolo**.
