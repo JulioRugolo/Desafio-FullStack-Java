@@ -1,16 +1,20 @@
 require('dotenv').config();
 const express = require('express');
 const sequelize = require('./config/database'); // Configuração do Sequelize
+const cors = require('cors');
+
+// Importar rotas
 const PaisRoutes = require('./routes/PaisRoutes');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 // Middleware
 app.use(express.json());
+app.use(cors());
 
-// Rotas de Países
-app.use('/api/paises', PaisRoutes);
+// Rotas
+app.use('/api/pais/', PaisRoutes);
 
 // Sincronizar modelos e iniciar o servidor
 sequelize

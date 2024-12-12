@@ -51,9 +51,13 @@ export class PaisesComponent implements OnInit {
 		})
 	}
 
-	navegarParaCadastro(codigoPais: string = ""){
-		this.router.navigate(['cadastro', codigoPais], { relativeTo: this.activatedRoute })
-	}
+	navegarParaCadastro(codigoPais: string = "") {
+		if (codigoPais) {
+		  this.router.navigate(['cadastro', codigoPais], { relativeTo: this.activatedRoute });
+		} else {
+		  this.router.navigate(['cadastro'], { relativeTo: this.activatedRoute });
+		}
+	  }
 
 	carregarPaises(){
 		return this.httpService.get('pais').subscribe({

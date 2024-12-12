@@ -1,27 +1,4 @@
 services:
-  backend:
-    build:
-      context: ./Backend
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
-    environment:
-      - DB_HOST=mysql
-      - DB_USER=root
-      - DB_PASSWORD=totvs@123
-      - DB_NAME=pontos_turisticos
-      - DB_PORT=3306
-      - PORT=3000
-    depends_on:
-      - mysql
-
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    ports:
-      - "4200:80"
-
   mysql:
     image: mysql:8.0
     container_name: mysql
