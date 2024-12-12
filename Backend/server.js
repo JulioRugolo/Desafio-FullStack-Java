@@ -5,6 +5,7 @@ const cors = require('cors');
 
 // Importar rotas
 const PaisRoutes = require('./routes/PaisRoutes');
+const PontoTuristicoRoutes = require('./routes/PontoTuristicoRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -15,6 +16,7 @@ app.use(cors());
 
 // Rotas
 app.use('/api/pais/', PaisRoutes);
+app.use('/api/ponto-turistico/', PontoTuristicoRoutes);
 
 // Sincronizar modelos e iniciar o servidor
 sequelize
