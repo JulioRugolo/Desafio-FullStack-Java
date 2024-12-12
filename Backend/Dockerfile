@@ -1,14 +1,8 @@
-FROM node:18-alpine
+FROM mysql:8.0
 
-WORKDIR /usr/src/app
+ENV MYSQL_ROOT_PASSWORD=totvs@123
+ENV MYSQL_DATABASE=pontos_turisticos
 
-COPY package*.json ./
+EXPOSE 3306
 
-RUN npm install
-
-COPY . .
-
-EXPOSE 3000
-
-# Comando para rodar o servidor
-CMD ["npm", "run", "dev"]
+CMD ["mysqld"]

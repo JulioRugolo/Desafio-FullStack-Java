@@ -4,7 +4,10 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "npm run start:mysql && npm run wait:mysql && node server.js",
+    "start:mysql": "docker build -t backend-mysql ./ && docker run -d -p 3306:3306 --name backend-mysql backend-mysql",
+    "stop:mysql": "docker stop backend-mysql && docker rm backend-mysql",
+    "wait:mysql": "node waitForMysql.js",
     "dev": "nodemon server.js"
   },
   "keywords": [],
