@@ -1,4 +1,36 @@
-<po-page-detail
-    p-title="Cadastro de comentários">
-
-</po-page-detail>>
+<po-page-detail [p-title]="'Detalhes do Ponto Turístico'">
+    <!-- Lista de comentários -->
+    <div *ngIf="comentarios.length > 0; else noComentarios">
+      <div *ngFor="let comentario of comentarios" class="comentario-card">
+        <strong>{{ comentario.autor }}</strong>
+        <p>{{ comentario.texto }}</p>
+        <small>{{ comentario.data }}</small>
+      </div>
+    </div>
+  
+    <!-- Mensagem para quando não há comentários -->
+    <ng-template #noComentarios>
+      <p>Nenhum comentário encontrado. Seja o primeiro a comentar!</p>
+    </ng-template>
+  
+    <!-- Formulário para adicionar comentários -->
+    <form [formGroup]="formComentario" class="po-pt-3">
+      <po-input
+        p-label="Autor"
+        formControlName="autor"
+        p-placeholder="Seu nome"
+      ></po-input>
+  
+      <po-textarea
+        p-label="Comentário"
+        formControlName="texto"
+        p-placeholder="Digite seu comentário"
+      ></po-textarea>
+  
+      <po-button
+        p-label="Enviar Comentário"
+        p-type="primary"
+        (p-click)="adicionarComentario()"
+      ></po-button>
+    </form>
+  </po-page-detail>

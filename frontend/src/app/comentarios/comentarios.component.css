@@ -1,0 +1,22 @@
+.comentarios-container {
+    margin-top: 20px;
+  }
+  
+  .sem-comentarios {
+    color: gray;
+    font-style: italic;
+    margin: 10px 0;
+  }
+  
+  .comentario {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+  }
+  
+  .formulario-novo-comentario {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  

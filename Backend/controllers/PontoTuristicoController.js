@@ -13,15 +13,28 @@ const criarPontoTuristico = async (req, res) => {
 
 // Listar todos os pontos turísticos
 const listarPontosTuristicos = async (req, res) => {
-  try {
-    const pontosTuristicos = await PontoTuristico.findAll({
-      include: { model: Pais, as: 'pais' }, // Inclui os dados do País relacionado
-    });
-    res.json(pontosTuristicos);
-  } catch (error) {
-    res.status(500).json({ error: 'Erro ao listar os pontos turísticos.' });
-  }
-};
+    try {
+      const pontosTuristicos = await PontoTuristico.findAll({
+        attributes: ['id', 'nome', 'cidade', 'melhorEstacao', 'resumo'],
+        include: { 
+          model: Pais, 
+          as: 'pais',
+          attributes: ['id', 'nome']
+        },
+      });
+  
+      // Converte o ID para string
+      const pontosTuristicosFormatados = pontosTuristicos.map(ponto => ({
+        ...ponto.toJSON(),
+        id: String(ponto.id),
+        pais: ponto.pais ? { ...ponto.pais.toJSON(), id: String(ponto.pais.id) } : null,
+      }));
+  
+      res.json(pontosTuristicosFormatados);
+    } catch (error) {
+      res.status(500).json({ error: 'Erro ao listar os pontos turísticos.' });
+    }
+  };
 
 // Obter um ponto turístico por ID
 const obterPontoTuristico = async (req, res) => {

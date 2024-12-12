@@ -1,4 +1,27 @@
-<po-page-detail
-    p-title="Novo cadastro de comentário">
-
-</po-page-detail>
+<po-page-detail p-title="Novo Comentário">
+    <form [formGroup]="formComentario">
+      <po-input
+        p-label="Nome do Autor"
+        formControlName="autor"
+        p-placeholder="Digite seu nome">
+      </po-input>
+  
+      <po-textarea
+        p-label="Comentário"
+        formControlName="texto"
+        p-placeholder="Digite seu comentário">
+      </po-textarea>
+    </form>
+  
+    <div class="po-row po-pt-2" style="justify-content: flex-end;">
+      <po-button
+        p-label="Salvar"
+        (p-click)="salvar()">
+      </po-button>
+      <po-button
+        p-label="Cancelar"
+        (p-click)="cancelar()">
+      </po-button>
+    </div>
+  </po-page-detail>
+  

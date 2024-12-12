@@ -14,7 +14,7 @@ const Pais = sequelize.define('Pais', {
       notEmpty: true,
     },
   },
-  ddi: { // Alterado para camelCase
+  ddi: { 
     type: DataTypes.INTEGER,
     allowNull: false,
     validate: {
@@ -26,7 +26,7 @@ const Pais = sequelize.define('Pais', {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
-      len: [2, 3], // Garantir que a sigla tenha 2 ou 3 caracteres
+      len: [2, 3],
     },
   },
   continente: {
@@ -37,8 +37,8 @@ const Pais = sequelize.define('Pais', {
     },
   },
 }, {
-  tableName: 'Pais', // Define o nome exato da tabela
-  timestamps: false, // Remove createdAt e updatedAt
+  tableName: 'Pais',
+  timestamps: false,
 });
 
 module.exports = Pais;
