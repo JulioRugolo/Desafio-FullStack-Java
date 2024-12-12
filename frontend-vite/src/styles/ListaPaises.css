@@ -1,0 +1,55 @@
+.lista-paises-container {
+    max-width: 600px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  .lista-paises-container h2 {
+    color: #007bff;
+    margin-bottom: 20px;
+  }
+  
+  .lista-paises-container ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .lista-paises-container li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .lista-paises-container li:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .lista-paises-container button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: 10px;
+  }
+  
+  .lista-paises-container .editar-btn {
+    color: #007bff;
+  }
+  
+  .lista-paises-container .editar-btn:hover {
+    color: #0056b3;
+  }
+  
+  .lista-paises-container .excluir-btn {
+    color: #dc3545;
+  }
+  
+  .lista-paises-container .excluir-btn:hover {
+    color: #a71d2a;
+  }
+  

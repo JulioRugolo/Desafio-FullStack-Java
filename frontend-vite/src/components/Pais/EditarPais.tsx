@@ -1,15 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../../styles/CadastroPais.css';
+import { useParams, useNavigate } from 'react-router-dom';
 
-const CadastroPais: React.FC = () => {
+const EditarPais: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     nome: '',
     sigla: '',
     ddi: '',
     continente: '',
   });
-  const [message, setMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (id) {
+      axios
+        .get(`http://localhost:3000/api/pais/${id}`)
+        .then((response) => setForm(response.data))
+        .catch((error) => console.error('Erro ao carregar país:', error));
+    }
+  }, [id]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -18,28 +28,21 @@ const CadastroPais: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const data = { ...form, ddi: parseInt(form.ddi, 10) };
-
     axios
-      .post('http://localhost:3000/api/pais', data)
+      .put(`http://localhost:3000/api/pais/${id}`, form)
       .then(() => {
-        setMessage('País cadastrado com sucesso!');
-        setForm({
-          nome: '',
-          sigla: '',
-          ddi: '',
-          continente: '',
-        });
+        alert('País atualizado com sucesso!');
+        navigate('/pais');
       })
       .catch((error) => {
-        console.error('Erro ao cadastrar país:', error);
-        setMessage('Erro ao cadastrar país. Verifique os dados.');
+        console.error('Erro ao atualizar país:', error);
+        alert('Erro ao atualizar país.');
       });
   };
 
   return (
-    <div className="cadastro-pais-container">
-      <h2>Cadastro de País</h2>
+    <div>
+      <h2>Editar País</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label>
@@ -94,9 +97,8 @@ const CadastroPais: React.FC = () => {
         </div>
         <button type="submit">Salvar</button>
       </form>
-      {message && <p>{message}</p>}
     </div>
   );
 };
 
-export default CadastroPais;
+export default EditarPais;
