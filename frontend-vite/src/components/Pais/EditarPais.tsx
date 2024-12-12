@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import '../../styles/EditarPais.css'; // Importando o CSS
 
 const EditarPais: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -41,7 +42,7 @@ const EditarPais: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="editar-pais-container">
       <h2>Editar País</h2>
       <form onSubmit={handleSubmit}>
         <div>
