@@ -1,6 +1,5 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-const PontoTuristico = require('./PontoTuristico');
 
 const Comentario = sequelize.define('Comentario', {
   id: {
@@ -19,9 +18,8 @@ const Comentario = sequelize.define('Comentario', {
   dataCriacao: {
     type: DataTypes.DATE,
     defaultValue: DataTypes.NOW,
+    allowNull: false,
   },
 });
-
-Comentario.belongsTo(PontoTuristico, { foreignKey: 'pontoTuristicoId', as: 'pontoTuristico' });
 
 module.exports = Comentario;
